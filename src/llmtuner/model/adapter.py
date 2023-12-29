@@ -27,7 +27,7 @@ def init_adapter(
     Note that the trainable parameters must be cast to float32.
     """
 
-    if (not is_trainable) and model_args.adapter_name_or_path is None:
+    if (not is_trainable) and model_args.adapter_name_or_path is None and model_args.ckpt_name_or_path is None:
         logger.info("Adapter is not found at evaluation, load the base model.")
         return model
 

@@ -37,7 +37,7 @@ def init_adapter(
         model = model.float()
 
         if model_args.ckpt_name_or_path is not None:
-            
+            model.load_state_dict(torch.load(model_args.ckpt_name_or_path, map_location="cpu"))
             
 
     if finetuning_args.finetuning_type == "freeze" and is_trainable:

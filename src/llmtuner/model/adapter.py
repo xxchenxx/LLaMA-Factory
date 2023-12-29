@@ -26,8 +26,9 @@ def init_adapter(
 
     Note that the trainable parameters must be cast to float32.
     """
-
+    model.load_state_dict(torch.load(model_args.ckpt_name_or_path, map_location="cpu"))
     if (not is_trainable) and model_args.adapter_name_or_path is None and model_args.ckpt_name_or_path is None:
+        model.load_state_dict(torch.load(model_args.ckpt_name_or_path, map_location="cpu"))
         logger.info("Adapter is not found at evaluation, load the base model.")
         return model
 
@@ -36,7 +37,7 @@ def init_adapter(
         model = model.float()
 
         if model_args.ckpt_name_or_path is not None:
-            model.load_state_dict(torch.load(model_args.ckpt_name_or_path, map_location="cpu"))
+            
             
 
     if finetuning_args.finetuning_type == "freeze" and is_trainable:

@@ -14,6 +14,10 @@ class ModelArguments:
         default=None,
         metadata={"help": "Path to the adapter weight or identifier from huggingface.co/models."}
     )
+    ckpt_name_or_path: Optional[str] = field(
+        default=None,
+        metadata={"help": "Path to the adapter weight or identifier from huggingface.co/models."}
+    )
     cache_dir: Optional[str] = field(
         default=None,
         metadata={"help": "Where to store the pre-trained models downloaded from huggingface.co or modelscope.cn."}
